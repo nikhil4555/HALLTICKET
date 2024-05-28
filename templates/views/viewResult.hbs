@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Result</title>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: -webkit-linear-gradient(left, #003366, #004080, #0059b3, #0073e6);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            height: 80vh;
+        }
+        .form-container {
+            margin-bottom: 75px;
+            border-radius: 15px;
+            padding: 25px;
+            height: 30vh;
+            width: 30vw;
+            border: none;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        label {
+            font-size: 16px;
+        }
+        input[type="number"], input[type="email"], input[type="submit"] {
+            width: 75%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 9px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            width: 95px;
+            background-color: #0073e6;
+            color: white;
+            cursor: pointer;
+            border: none;
+
+        }
+        input[type="submit"]:hover {
+            background-color: #0059b3;
+        }
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+       /* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    /* background-color: #333; */
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 40px;
+  }
+  
+  /* Navigation bar styles */
+  nav {
+    text-align: right;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  
+  nav ul li {
+    margin-left: 20px;
+  }
+  
+  /* Navigation bar link styles */
+nav ul li a {
+    text-decoration: none;
+    color: #fff; /* Original color */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+  }
+  
+  /* Hover effect for navigation bar links */
+  nav ul li a:hover {
+    color: #fca37b; /* New color on hover */
+  }
+  
+  h2{
+   color: #f76521 ;
+  }
+    </style>
+</head>
+<body>
+
+{{>header}}
+  <div class="container">
+    <div class="form-container">
+       <u>
+        <h2>Your Result:</h2>
+       </u>
+        <p><b>Hall Ticket Number:</b> {{result.hallticket}}</p>
+        <p><b>Your Email:</b> {{result.email}}</p>
+        <p><b>Your Score: </b> {{result.score}}</p>
+  </div> 
+</div>
+{{>footer}}
+
+</body>
+</html>

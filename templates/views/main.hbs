@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall Ticket Form</title>
+    
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: -webkit-linear-gradient(left, #003366,#004080,#0059b3, #0073e6);
+            
+        }
+         .container { /* Wrap header and form for better responsiveness */
+            display: flex;
+            flex-direction: column; /* Stack header and form vertically */
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            width: 90%; /* Take up full width on smaller screens */
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none; /* No border for the outer form container */
+            margin: 0 auto;
+        }
+        .form-group {
+            display: flex; /* Make label and input side by side */
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        label {
+            flex-basis: 30%;
+            margin-right: 10px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            flex-basis: 70%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc; /* Border for the inputs */
+            background-color: #f5d04c; /* Unique color for the input fields */
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+        }
+        button[type="button"] {
+            background-color: #0e86ef;
+            color: white;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+       
+       input[type="text"]:valid, 
+       input[type="email"]:valid,
+       input[type="tel"]:valid,
+       select:valid
+       {
+       background-color: rgb(223, 243, 250)
+       }
+    footer {
+         position: fixed;
+         left: 0;
+         bottom: 0;
+         width: 100%;
+         color: #fff;
+         text-align: center;
+         padding: 10px;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      color: #fff;
+      top: 0;
+      width: 100%; /* Maintain full width on smaller screens */
+      position: sticky;
+    }
+
+    header h1 {
+      font-size: 40px;
+      color: #fff;
+      margin: 0
+    }
+    .nav-container {
+    display: flex;
+    justify-content: flex-start;
+    
+    padding: 10px 20px;
+    color: #fff;
+    margin-left: 0; /* adjust margin if needed */
+    }
+    
+
+    nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    }
+
+    nav ul li {
+      /* Spacing between navigation items */
+      margin-right: 10px;
+    }
+
+    nav ul li button {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    nav ul li button:hover {
+      color: #fca37b;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 545px;
+      margin-top: 75px;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: none;
+      
+    }
+
+    .form-group {
+      
+      font: 1em sans-serif;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      
+    }
+
+    </style>
+   
+</head>
+<body onload="onpageload()">
+    
+<div class="contaner">
+
+    <header>
+        <h1 class="company-name">KR TECHNOLOGIES PVT LTD</h1>
+    <nav class="nav-container">
+    <ul>
+      <li><a href="/">
+      <button type="button">Home</button></li>
+      </a>
+      <li><a href="/about">
+      <button type="button">About</button>
+      </a>
+      </li>
+      <li><a href="/result">
+      <button type="button">Results</button></li>
+      </a>
+         <li><a href="/logout">
+      <button type="button">Logout</button></li>
+      </a>
+    
+    </ul>
+    </nav>    
+    </header>
+    
+    <div class="form-container">
+        <form id="hallTicketForm" action="/generateTicket" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="fatherName">Father's Name:</label>
+                <input type="text" id="fatherName" name="fatherName" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile:</label>
+                <input type="tel" id="mobile" name="mobile" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="preference1">First Preference:</label>
+                <select name="preference1" id="preference1" required onchange="updatePreferences()">
+                    <option value="">Select...</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Secundrabad">Secundrabad</option>
+                    <option value="Uppal">Uppal</option>
+                    <option value="Gachibowli">Gachibowli</option>
+                    <option value="Warangal">Warangal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="preference2">Second Preference:</label>
+                <select name="preference2" id="preference2" required>
+                    <option value="">Select...</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Secundrabad">Secundrabad</option>
+                    <option value="Uppal">Uppal</option>
+                    <option value="Gachibowli">Gachibowli</option>
+                    <option value="Warangal">Warangal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="preference3">Third Preference:</label>
+                <select name="preference3" id="preference3" required>
+                    <option value="">Select...</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Secundrabad">Secundrabad</option>
+                    <option value="Uppal">Uppal</option>
+                    <option value="Gachibowli">Gachibowli</option>
+                    <option value="Warangal">Warangal</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button type="submit" id="generateButton">Generate Hall Ticket</button>
+                <button type="button">Clear</button>
+            </div>
+        </form>
+    </div>
+    
+    {{>footer}}
+</div>
+    <script src="./js/main.js"></script>
+</body>
+</html>
