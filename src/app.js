@@ -5,17 +5,17 @@ const hbs =require('hbs');
 const app = express();
 const port = process.env.PORT || 4000;
 
-const connectDb = require('./src/db/conn');
+const connectDb = require('./db/conn');
 connectDb();
 
 // Password validation with express-validator
 // const { check, validationResult } = require('express-validator');
 
 //paths
-const static_path = path.join(__dirname,'./../public')
-const view_path = path.join(__dirname,'./../templates/views')
-const partials_path = path.join(__dirname,'./../templates/partails')
-const routes = require('./routes/main')
+const static_path = path.join(__dirname, '../../27-Journey/public');
+const view_path = path.join(__dirname, '../../27-Journey/templates/views');
+const partials_path = path.join(__dirname, '../../27-Journey/templates/partials');
+const routes = require('../routes/main')
 
 //middlewares type-->
 app.use(express.json());
