@@ -16,13 +16,16 @@
 
     body, input, textarea {
       font-family: "Poppins", sans-serif;
+      background: linear-gradient(to right, #003366, #004080, #0059b3, #0073e6);
+    }
+    ::placeholder{
+      color: #fff;
     }
 
     .container {
-      background: linear-gradient(to right, #003366, #004080, #0059b3, #0073e6);
       position: relative;
       width: 100%;
-      min-height: 100vh;
+      {{!-- min-height: 100vh; --}}
       padding: 2rem;
       display: flex;
       align-items: center;
@@ -230,6 +233,60 @@
       right: 50px;
       opacity: 0.3;
     }
+    footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+      /* Header styles */
+      header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      }
+
+      header h1 {
+      margin: 0;
+      font-size: 40px;
+      }
+
+      /* Navigation bar styles */
+      nav {
+      text-align: right;
+      }
+
+      nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      }
+
+      nav ul li {
+      margin-left: 20px;
+      }
+
+      /* Navigation bar link styles */
+      nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      cursor: pointer;
+      }
+
+      nav ul li a:hover {
+      color: #fca37b;
+      }
+
 
     @media (max-width: 850px) {
       .form {
@@ -301,8 +358,9 @@
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  {{>header}}
   <div class="container">
-    <img src="img/shape.png" class="square" alt="" />
+
     <div class="form">
       <div class="contact-info">
         <h3 class="title">Let's get in touch:</h3>
@@ -362,6 +420,7 @@
       </div>
     </div>
   </div>
+  {{> footer}}
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>

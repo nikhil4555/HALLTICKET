@@ -18,12 +18,11 @@
     input,
     textarea {
       font-family: "Poppins", sans-serif;
+      background: linear-gradient(to right, #003366, #004080, #0059b3, #0073e6);
     }
 
     .container {
-      background: linear-gradient(to right, #003366, #004080, #0059b3, #0073e6);
       width: 100%;
-      min-height: 100vh;
       padding: 2rem;
       display: flex;
       align-items: center;
@@ -78,56 +77,52 @@
       color: #0f77de;
     }
 
+          /* Header styles */
+      header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      }
 
-      
+      header h1 {
+      margin: 0;
+      font-size: 40px;
+      }
 
-  * Header styles */
-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 10px 20px;
-color: #fff;
-position: sticky;
-top: 0;
-z-index: 1000;
-}
+      /* Navigation bar styles */
+      nav {
+      text-align: right;
+      }
 
-header h1 {
-margin: 0;
-font-size: 40px;
-}
+      nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      }
 
-/* Navigation bar styles */
-nav {
-text-align: right;
-}
+      nav ul li {
+      margin-left: 20px;
+      }
 
-nav ul {
-list-style: none;
-display: flex;
-justify-content: flex-end;
-}
+      /* Navigation bar link styles */
+      nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      cursor: pointer;
+      }
 
-nav ul li {
-margin-left: 20px;
-}
-
-/* Navigation bar link styles */
-nav ul li a {
-text-decoration: none;
-color: #fff;
-font-weight: bold;
-transition: color 0.3s ease;
-cursor: pointer;
-}
-
-  nav ul li a:hover {
-    color: #fca37b; 
-    }
+      nav ul li a:hover {
+      color: #fca37b;
+      }
 
 
-    
     footer {
       position: fixed;
       left: 0;
@@ -161,8 +156,8 @@ cursor: pointer;
     }
   </style>
 </head>
-{{>header}}
 <body>
+{{>header}}
   <div class="container">
     <div class="about-section">
       <h2>About KR Techno</h2>

@@ -41,6 +41,7 @@ router.post('/register', async (req, res) => {
       const confirmpassword = req.body.cnfpassword;
       const phone = req.body.phone;
   
+      //Error handeling
       // Check for duplicate phone number
       const phoneExists = await userschema.findOne({ phone: phone });
       if (phoneExists) {
@@ -122,6 +123,8 @@ async function generateHallTicketPDF (userData, res) {
   
     const preferences = userData.preference1 ? [userData.preference1, userData.preference2, userData.preference3] : [];
     
+
+    //In here the capacities array will hold the center and capcity values of the latest one from which the db has its values
     const centerCapacities = await CenterCapacity.find();
     let capacities = {};
     centerCapacities.forEach(center => {
@@ -154,7 +157,7 @@ async function generateHallTicketPDF (userData, res) {
     doc.text(`Mobile: ${userData.mobile}`, { fontSize: 14 });
     doc.text(`Email: ${userData.email}`, { fontSize: 14 });
     // Add assigned center
-    doc.text(`Assigned Center: ${assignedCenter}`, { fontSize: 14 });
+    doc.font('Helvetica-Bold').text(`Assigned Center: ${assignedCenter}`, { fontSize: 14 });
     // Add preference information
     if (preferences.length > 0) {
         doc.text('Preferences Choosen:', { fontSize: 14, bold: true });
@@ -183,10 +186,10 @@ async function generateHallTicketPDF (userData, res) {
     
     
     // Return a promise that resolves after saving
-    return new Promise((resolve, reject) => {
-    res.on('finish', () => resolve());
-    res.on('error', reject);
-  });
+    // return new Promise((resolve, reject) => {
+    // res.on('finish', () => resolve());
+    // res.on('error', reject);
+  // });
     
 }
 

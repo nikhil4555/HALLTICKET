@@ -1,8 +1,10 @@
-
-
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-/* General styles */
+
+
+
+
+/*General styles*/
 * {
   margin: 0;
   padding: 0;
@@ -23,8 +25,16 @@ background: #1a75ff;
 color: #fff;
 }
 
-#hallticket b{
- color: #f98e5c;
+.hero-section{
+  color: yellow;
+  text-decoration: wavy;
+}
+
+#hallticket{
+ color: #ed6526;
+}
+h2{
+  color: #f5d04c;
 }
 
 /* Header styles */
@@ -137,7 +147,6 @@ background-color: rgba(255, 255, 255, 0.3);
 bottom: -160px;
 animation: square 20s infinite linear;
 border-radius: 50%;
-animation-delay: 0s; /* Added to reduce the initial delay */
 }
 
 .colorlib-bubbles li:nth-child(1) {
