@@ -109,6 +109,8 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 
 .image-gallery img:hover {
 transform: scale(1.05);
+cursor: pointer;
+box-shadow: 0 4px 8px rgba(0, 1, 3, 0.9);
 }
 
 /* Footer styles */
