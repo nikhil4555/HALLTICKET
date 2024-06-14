@@ -5,7 +5,7 @@ const userschema = require('./../src/models/register')
 const HallTicket = require('./../src/models/hallticket');
 const CenterCapacity = require('./../src/models/CenterCapacity');
 const Result = require('./../src/models/results')
-const initialCapacity = require('./../src/db/initializeCapacities');
+const initialCapacity = require('../src/db/initializeCapacities');
 initialCapacity;
 const initializeResult = require('./../src/db/initializeResult')
 initializeResult;
