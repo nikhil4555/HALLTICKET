@@ -1,7 +1,7 @@
 // db/conn.js
 const dotenv = require('dotenv')
 const mongoose = require('mongoose');
-dotenv.config({path:'./LOGIN/src/.env'})
+dotenv.config({path:'src/.env'})
 
 
 
