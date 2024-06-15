@@ -1,17 +1,20 @@
-const dotenv = require('dotenv');
+// db/conn.js
+const dotenv = require('dotenv')
 const mongoose = require('mongoose');
+dotenv.config({path:'src/.env'})
 
-dotenv.config({ path: 'src/.env' }); // Assuming your .env file is in src folder
+
 
 const mongouri = process.env.MONGO_URI;
-
+console.log(mongouri);
 const connectDb = async () => {
   try {
-    await mongoose.connect(mongouri, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(mongouri,{
+      serverSelectionTimeoutMS: 10000  // Increased timeout to 20 seconds
+    });
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error(err);
-    process.exit(1); // Exit the process on connection failure
   }
 };
 
