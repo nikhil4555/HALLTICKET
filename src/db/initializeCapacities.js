@@ -16,19 +16,36 @@ async function connectToMongo() {
 // Initialize center capacities
 const centers = ["Hyderabad", "Secundrabad", "Uppal", "Gachibowli", "Warangal"];
 const initialCapacity = 15;
+const timeout = 15000; // Set your desired timeout in milliseconds (15 seconds in this case)
 
 async function initializeCapacities() {
   await connectToMongo(); // Ensure connection before proceeding
 
   try {
     for (const center of centers) {
-      const existingCenter = await CenterCapacity.findOne({ center: center });
-      if (!existingCenter) {
-        const newCenter = new CenterCapacity({
-          center: center,
-          capacity: initialCapacity
-        });
-        await newCenter.save();
+      const findOnePromise = new Promise((resolve, reject) => {
+        const timeoutId = setTimeout(() => {
+          reject(new Error('Find operation timed out'));
+        }, timeout);
+
+        CenterCapacity.findOne({ center: center })
+          .then(existingCenter => resolve(existingCenter))
+          .catch(err => reject(err));
+      });
+
+      try {
+        const existingCenter = await findOnePromise;
+        if (!existingCenter) {
+          const newCenter = new CenterCapacity({
+            center: center,
+            capacity: initialCapacity
+          });
+          await newCenter.save();
+        }
+      } catch (err) {
+        console.error(`Error finding center "${center}":`, err);
+      } finally {
+        clearTimeout(timeoutId); // Clear the timeout regardless of success or failure
       }
     }
     console.log('Center capacities initialized successfully');
