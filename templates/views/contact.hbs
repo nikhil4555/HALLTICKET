@@ -22,6 +22,14 @@
     ::placeholder{
       color: #fff;
     }
+    .menu-btn {
+       display: none;
+       font-size: 24px;
+       cursor: pointer;
+       color: #fff;
+       background: none;
+       border: none;
+    }
 
     .container {
       position: relative;
@@ -288,9 +296,45 @@
       nav ul li a:hover {
       color: #fca37b;
       }
-
+  /*Responsive Designs*/
 
     @media (max-width: 850px) {
+      .menu-btn {
+        display: block;
+          
+        font-size: 24px;
+           color: #fff;
+         background: none;
+         border: none;
+         cursor: pointer;
+         position: absolute;
+         top: 10px;
+         right: 20px;
+      } 
+       nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        text-align: center;
+      }
+      header{
+        background: rgba(0, 0, 0, 0.8);
+      }
+      header h1{
+        font-size: 30px;
+      }
+      nav ul.active {
+        display: flex;
+        
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
       .form {
         grid-template-columns: 1fr;
       }
@@ -315,6 +359,16 @@
       .social-media {
         padding: 1.5rem 0 0 0;
       }
+       footer {
+    padding: 5px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
     }
 
     @media (max-width: 480px) {
@@ -355,7 +409,17 @@
       .btn {
         padding: 0.45rem 1.2rem;
       }
-    }
+       footer {
+    padding: 5px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+  }
   </style>
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 </head>
@@ -458,6 +522,25 @@
           console.log("FAILED...", error);
           alert("Failed to send the message. Please try again later.");
         });
+    });
+
+    // JavaScript for menu button toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav ul');
+
+    menuBtn.addEventListener('click', (e) => {
+      nav.classList.toggle('active');
+      e.stopPropagation();
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+
+    // Prevent closing when clicking inside the nav
+    nav.addEventListener('click', (e) => {
+      e.stopPropagation();
     });
   </script>
 </body>

@@ -48,6 +48,27 @@
     </div>
   </div>
 
+
+  <script>
+     // JavaScript for menu button toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav ul');
+
+    menuBtn.addEventListener('click', (e) => {
+      nav.classList.toggle('active');
+      e.stopPropagation();
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+
+    // Prevent closing when clicking inside the nav
+    nav.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  </script>
   {{> footer}}
 </body>
 </html>

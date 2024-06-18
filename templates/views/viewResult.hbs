@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Result-KR Techno</title>
     <link rel="shortcut icon" type="x-icon" href="./css/logo.png">  
      <style>
@@ -11,6 +12,14 @@
             margin: 0;
             padding: 0;
         }
+          .menu-btn {
+       display: none;
+       font-size: 24px;
+       cursor: pointer;
+       color: #fff;
+       background: none;
+       border: none;
+    }
         .container {
             display: flex; 
             justify-content: center;
@@ -118,7 +127,106 @@ nav ul li a {
   h1{
     margin-top:-12px ;
   }
-    </style>
+  /* Add responsive styles */
+        @media (max-width: 768px) {
+          nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        text-align: center;
+      }
+      header{
+        background: rgba(0, 0, 0, 0.8);
+      }
+      header h1{
+        font-size: 30px;
+      }
+      nav ul.active {
+        display: flex;
+        
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .menu-btn {
+        display: block;  
+      font-size: 24px;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      }
+      footer {
+    padding: 5px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+            header h1 {
+                font-size: 24px;
+            }
+            nav ul li {
+                margin-left: 10px;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            .form-container {
+                width: 95%;
+                padding: 15px;
+            }
+            .container{
+            padding: 10px;
+            {{!-- margin: 0 15px; --}}
+            width: 88%;
+          }
+        } 
+        @media (max-width: 480px) {
+          .container{
+            padding: 10px;
+            margin: 0 15px;
+          }
+            header {
+                flex-direction: column;
+            }
+            nav ul {
+                width: 100%;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            .form-container {
+                width: 90%;
+                padding: 15px;
+            }
+            footer {
+    padding: 5px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+        }
+  </style>
 </head>
 <body>
 
@@ -135,6 +243,26 @@ nav ul li a {
   </div> 
 </div>
 {{>footer}}
+ <script>
+         // JavaScript for menu button toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav ul');
+
+    menuBtn.addEventListener('click', (e) => {
+      nav.classList.toggle('active');
+      e.stopPropagation();
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+
+    // Prevent closing when clicking inside the nav
+    nav.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    </script>
 
 </body>
 </html>

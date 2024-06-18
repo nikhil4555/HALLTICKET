@@ -65,6 +65,14 @@
             text-align: center;
             padding: 10px;
         }
+         .menu-btn {
+       display: none;
+       font-size: 24px;
+       cursor: pointer;
+       color: #fff;
+       background: none;
+       border: none;
+    }
        /* Header styles */
 header {
     display: flex;
@@ -112,6 +120,145 @@ nav ul li a {
   nav ul li a:hover {
     color: #fca37b; /* New color on hover */
   }
+/*Responsive*/
+
+   @media (max-width: 768px) {
+     .form-container {
+            font-size: medium;
+            width: 80%;
+            height: 33%;
+        }
+        .form-group {
+                flex-direction: column;
+                align-items: flex-start;
+                
+            }
+            label, 
+            input[type="number"],
+            input[type="email"] {
+                flex-basis: 100%;
+                margin-bottom: 5px;
+                width: 85%;
+                padding: 8px;
+            }
+            
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        text-align: center;
+      }
+      header{
+        background: rgba(0, 0, 0, 0.8);
+      }
+      header h1{
+        font-size: 30px;
+      }
+      nav ul.active {
+        display: flex;
+        
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .menu-btn {
+        display: block;  
+      font-size: 24px;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      }
+      footer {
+    padding: 5px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+    }
+
+    @media (max-width: 480px) {
+      
+          .form-container {
+                width: 80%;
+                height: 33%;
+                {{!-- margin-bottom: -20px; --}}
+
+            }
+            input[type="number"],
+            input[type="email"] {
+                width: 85%;
+                padding: 8px;
+            }
+            input[type="submit"] {
+                padding: 8px 16px;
+            }
+            .form-group {
+                margin-bottom: 10px;
+
+            }
+      header h1 {
+        font-size: 24px;
+      }
+      .menu-btn {
+        display: block;  
+        font-size: 24px;
+        color: #fff;
+         background: none;
+         border: none;
+         cursor: pointer;
+         position: absolute;
+         top: 10px;
+         right: 20px;
+      } 
+      footer {
+    padding: 5px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+  nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        text-align: center;
+      }
+      header{
+        background: rgba(0, 0, 0, 0.8);
+      }
+      header h1{
+        font-size: 30px;
+      }
+      nav ul.active {
+        display: flex;
+        
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
     </style>
 </head>
 <body>
@@ -138,5 +285,25 @@ nav ul li a {
     <footer>
         &copy; 2024 KR TECHNOLOGIES PVT LTD
     </footer>
+    <script>
+         // JavaScript for menu button toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav ul');
+
+    menuBtn.addEventListener('click', (e) => {
+      nav.classList.toggle('active');
+      e.stopPropagation();
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+
+    // Prevent closing when clicking inside the nav
+    nav.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    </script>
 </body>
 </html>

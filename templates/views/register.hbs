@@ -1,78 +1,86 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register-KR Techno</title>
-    <link rel="stylesheet" href="./css/loginstyle.css">
-    <link rel="shortcut icon" type="x-icon" href="./css/logo.png">  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register-KR Techno</title>
+  <link rel="stylesheet" href="./css/loginstyle.css">
+  <link rel="shortcut icon" type="x-icon" href="./css/logo.png">  
 </head>
 <body>
-    <h1 style="color: aliceblue;">{{registrationMessage}}</h1>
-  
-  {{!-- {{>header}} --}}
+  {{>header}}
   <div class="wrapper">
-      <div class="title-text">
-        <div class="title login">Login Form</div>
-        <div class="title signup">Signup Form</div>
+    <div class="title-text">
+      <div class="title login">Login Form</div>
+      <div class="title signup">Signup Form</div>
+    </div>
+    <div class="form-container">
+      <div class="slide-controls">
+        <input type="radio" name="slide" id="login" checked>
+        <input type="radio" name="slide" id="signup">
+        <label for="login" class="slide login">Login</label>
+        <label for="signup" class="slide signup">Signup</label>
+        <div class="slider-tab"></div>
       </div>
-      <div class="form-container">
-        <div class="slide-controls">
-          <input type="radio" name="slide" id="login" checked>
-          <input type="radio" name="slide" id="signup">
-          <label for="login" class="slide login">Login</label>
-          <label for="signup" class="slide signup">Signup</label>
-          <div class="slider-tab"></div>
-        </div>
-
-
-        <div class="form-inner login"  >
-
-          <form action="/login" class="login" method="post" id="loginForm">
-            <div class="field">
-              <input type="text" placeholder="Email Address" required name="email">
-            </div>
-            <div class="field">
-              <input type="password" placeholder="Password" required name="password">
-            </div>
-            {{!-- <div class="pass-link"><a href="#">Forgot password?</a></div> --}}
-            <div class="field btn">
-              <div class="btn-layer"></div>
-              <input type="submit">
-            </div>
-            <div class="signup-link">Not a member? <a href="">Signup now</a></div>
-          </form>
-
-
-
-          <form action="/register" class="signup" method="post" id="registerForm">
-              
-              <div class="field">
-              <input type="text" placeholder="Full Name" required name="name">
-              </div>
-             <div class="field">
-              <input type="number" placeholder="Phone Number" required name="phone">
-            </div>
-            <div class="field">
-              <input type="email" placeholder="Email Address" required name="email">
-            </div>
-            <div class="field">
-              <input type="password" placeholder="Password" required name="password">
-            </div>
-            <div class="field">
-              <input type="password" placeholder="Confirm password" required name="cnfpassword">
-            </div>
-            <div class="field btn">
-              <div class="btn-layer"></div>
-              <input type="submit" >
-            </div>
-          </form>
-        </div>
+      <div class="form-inner">
+        <form action="/login" class="login" method="post" id="loginForm">
+          <div class="field">
+            <input type="text" placeholder="Email Address" required name="email">
+          </div>
+          <div class="field">
+            <input type="password" placeholder="Password" required name="password">
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit">
+          </div>
+          <div class="signup-link">Not a member? <a href="">Signup now</a></div>
+        </form>
+        <form action="/register" class="signup" method="post" id="registerForm">
+          <div class="field">
+            <input type="text" placeholder="Full Name" required name="name">
+          </div>
+          <div class="field">
+            <input type="number" placeholder="Phone Number" required name="phone">
+          </div>
+          <div class="field">
+            <input type="email" placeholder="Email Address" required name="email">
+          </div>
+          <div class="field">
+            <input type="password" placeholder="Password" required name="password">
+          </div>
+          <div class="field">
+            <input type="password" placeholder="Confirm password" required name="cnfpassword">
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit">
+          </div>
+        </form>
       </div>
     </div>
-    {{>footer}}
-    
-<script src="./js/login.js"></script>   
-</body>
-</html> 
+  </div>
+  {{>footer}}
+  <script>
+    // JavaScript for menu button toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav ul');
 
+    menuBtn.addEventListener('click', (e) => {
+      nav.classList.toggle('active');
+      e.stopPropagation();
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+
+    // Prevent closing when clicking inside the nav
+    nav.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  </script>
+  <script src="./js/login.js"></script>
+</body>
+</html>

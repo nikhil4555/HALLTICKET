@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us-KR Techno</title>
-  <link rel="stylesheet" href="indexstyle.css">
   <link rel="shortcut icon" type="x-icon" href="./css/logo.png">  
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
@@ -14,12 +13,16 @@
       padding: 0;
       box-sizing: border-box;
     }
+    html,body{
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to right, #003366, #004080, #0059b3, #0073e6);
+    }
 
     body,
     input,
     textarea {
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(to right, #003366, #004080, #0059b3, #0073e6);
     }
 
     .container {
@@ -77,9 +80,17 @@
       background-color: transparent;
       color: #0f77de;
     }
+    .menu-btn {
+       display: none;
+       font-size: 24px;
+       cursor: pointer;
+       color: #fff;
+       background: none;
+       border: none;
+    }
 
-          /* Header styles */
-      header {
+    /* Header styles */
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -87,42 +98,42 @@
       color: #fff;
       position: sticky;
       top: 0;
-      z-index: 1000;
-      }
+      z-index:12;
+      {{!-- background: rgba(0, 0, 0, 0.8); --}}
+    }
 
-      header h1 {
+    header h1 {
       margin: 0;
       font-size: 40px;
-      }
+    }
 
-      /* Navigation bar styles */
-      nav {
+    /* Navigation bar styles */
+    nav {
       text-align: right;
-      }
+    }
 
-      nav ul {
+    nav ul {
       list-style: none;
       display: flex;
       justify-content: flex-end;
-      }
+    }
 
-      nav ul li {
+    nav ul li {
       margin-left: 20px;
-      }
+    }
 
-      /* Navigation bar link styles */
-      nav ul li a {
+    /* Navigation bar link styles */
+    nav ul li a {
       text-decoration: none;
       color: #fff;
       font-weight: bold;
       transition: color 0.3s ease;
       cursor: pointer;
-      }
+    }
 
-      nav ul li a:hover {
+    nav ul li a:hover {
       color: #fca37b;
-      }
-
+    }
 
     footer {
       position: fixed;
@@ -132,6 +143,56 @@
       color: #fff;
       text-align: center;
       padding: 10px;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        text-align: center;
+      }
+      header{
+        background: rgba(0, 0, 0, 0.8);
+      }
+      header h1{
+        font-size: 30px;
+      }
+      nav ul.active {
+        display: flex;
+        
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .menu-btn {
+        display: block;
+          
+      font-size: 24px;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      }
+      footer {
+    padding: 5px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
     }
 
     @media (max-width: 480px) {
@@ -154,11 +215,38 @@
       .btn {
         padding: 0.45rem 1.2rem;
       }
+
+      header h1 {
+        font-size: 24px;
+      }
+      .menu-btn {
+        display: block;
+          
+        font-size: 24px;
+           color: #fff;
+         background: none;
+         border: none;
+         cursor: pointer;
+         position: absolute;
+         top: 10px;
+         right: 20px;
+      } 
+      footer {
+    padding: 5px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
     }
   </style>
 </head>
 <body>
-{{>header}}
+ {{>header}}
+
   <div class="container">
     <div class="about-section">
       <h2>About KR Techno</h2>
@@ -171,9 +259,30 @@
       <p>
         Our services range from software development to IT consulting, and we are always here to assist you with any technical challenges you may face.
       </p>
-      {{!-- <button class="btn" >Contact Us</button> --}}
     </div>
   </div>
+
   {{>footer}}
+
+  <script>
+    // JavaScript for menu button toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav ul');
+
+    menuBtn.addEventListener('click', (e) => {
+      nav.classList.toggle('active');
+      e.stopPropagation();
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', () => {
+      nav.classList.remove('active');
+    });
+
+    // Prevent closing when clicking inside the nav
+    nav.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  </script>
 </body>
 </html>
